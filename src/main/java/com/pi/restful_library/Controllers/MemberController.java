@@ -2,7 +2,7 @@ package com.pi.restful_library.Controllers;
 
 
 import com.pi.restful_library.Services.MemberService;
-import com.pi.restful_library.model.Member;
+import com.pi.restful_library.model.Members;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,25 +17,25 @@ public class MemberController {
     private MemberService memberService;
 
     @GetMapping
-    public List<Member> getAllMembers() {
+    public List<Members> getAllMembers() {
         return memberService.getAllMembers();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Member> getMemberById(@PathVariable Long id) {
+    public ResponseEntity<Members> getMemberById(@PathVariable Long id) {
         return memberService.getMemberById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public Member addMember(@RequestBody Member member) {
-        return memberService.addMember(member);
+    public Members addMember(@RequestBody Members members) {
+        return memberService.addMember(members);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Member> updateMember(@PathVariable Long id, @RequestBody Member memberDetails) {
-        return ResponseEntity.ok(memberService.updateMember(id, memberDetails));
+    public ResponseEntity<Members> updateMember(@PathVariable Long id, @RequestBody Members membersDetails) {
+        return ResponseEntity.ok(memberService.updateMember(id, membersDetails));
     }
 
     @DeleteMapping("/{id}")

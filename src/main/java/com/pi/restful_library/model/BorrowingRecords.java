@@ -9,18 +9,18 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @Entity
-public class BorrowingRecord {
+public class BorrowingRecords {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)
-    private Book book;
+    private Books books;
 
     @ManyToOne
     @JoinColumn(name = "member_id", nullable = false)
-    private Member member;
+    private Members members;
 
     @Column(nullable = false)
     private Date borrowDate;

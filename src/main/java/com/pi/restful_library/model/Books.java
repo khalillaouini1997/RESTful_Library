@@ -1,6 +1,5 @@
 package com.pi.restful_library.model;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,17 +7,19 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-public class Member {
+public class Books {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String title;
 
-    @Column(nullable = false, unique = true)
-    private String email;
+    @Column(nullable = false)
+    private String author;
 
-    @Column(nullable = false, unique = true)
-    private String membershipId;
+    private String genre;
+
+    @Column(nullable = false)
+    private int copiesAvailable;
 }

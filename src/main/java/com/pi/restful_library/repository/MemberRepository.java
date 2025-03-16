@@ -1,7 +1,10 @@
 package com.pi.restful_library.repository;
 
-import com.pi.restful_library.model.Member;
+import com.pi.restful_library.model.Members;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MemberRepository extends JpaRepository<Member, Long> {
+import java.util.Optional;
+
+public interface MemberRepository extends JpaRepository<Members, Long> {
+    Optional<Members> findByEmail(String email); // New method to find member by email
 }

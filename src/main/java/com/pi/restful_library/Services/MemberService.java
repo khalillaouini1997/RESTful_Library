@@ -1,6 +1,6 @@
 package com.pi.restful_library.Services;
 
-import com.pi.restful_library.model.Member;
+import com.pi.restful_library.model.Members;
 import com.pi.restful_library.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,24 +14,24 @@ public class MemberService {
     @Autowired
     private MemberRepository memberRepository;
 
-    public List<Member> getAllMembers() {
+    public List<Members> getAllMembers() {
         return memberRepository.findAll();
     }
 
-    public Optional<Member> getMemberById(Long id) {
+    public Optional<Members> getMemberById(Long id) {
         return memberRepository.findById(id);
     }
 
-    public Member addMember(Member member) {
-        return memberRepository.save(member);
+    public Members addMember(Members members) {
+        return memberRepository.save(members);
     }
 
-    public Member updateMember(Long id, Member memberDetails) {
-        Member member = memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Member not found"));
-        member.setName(memberDetails.getName());
-        member.setEmail(memberDetails.getEmail());
-        member.setMembershipId(memberDetails.getMembershipId());
-        return memberRepository.save(member);
+    public Members updateMember(Long id, Members membersDetails) {
+        Members members = memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Members not found"));
+        members.setName(membersDetails.getName());
+        members.setEmail(membersDetails.getEmail());
+        members.setMembershipId(membersDetails.getMembershipId());
+        return memberRepository.save(members);
     }
 
     public void deleteMember(Long id) {
